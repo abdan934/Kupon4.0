@@ -1,6 +1,6 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="navbar-header">
-        <a class="navbar-brand" href="<?=base_url('public/')?>">Undian</a>
+        <a class="navbar-brand" href="<?=base_url('/')?>">Undian</a>
     </div>
 
     <!-- 
@@ -102,7 +102,7 @@
                     <!-- /input-group -->
                 </li>
                 <li>
-                    <a href="<?=base_url('public/')?>"><i class="fa fa-dashboard fa-fw"></i>
+                    <a href="<?=base_url('/')?>"><i class="fa fa-dashboard fa-fw"></i>
                         Dashboard</a>
                 </li>
                 <!-- <li>
@@ -118,10 +118,10 @@
                 <!-- /.nav-second-level -->
                 <!-- </li> -->
                 <li>
-                    <a href="<?=base_url('public/data-peserta')?>"><i class="fa fa-table fa-fw"></i>Data Peserta</a>
+                    <a href="<?=base_url('/data-peserta')?>"><i class="fa fa-table fa-fw"></i>Data Peserta</a>
                 </li>
                 <li>
-                    <a href="<?=base_url('public/import-peserta-home')?>"><i class="fa fa-edit fa-fw"></i>Import
+                    <a href="<?=base_url('/import-peserta-home')?>"><i class="fa fa-edit fa-fw"></i>Import
                         Data</a>
                 </li>
                 <!-- <li>

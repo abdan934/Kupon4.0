@@ -34,7 +34,7 @@
                                     </a>
                                     <br><br>
 
-                                    <?= form_open_multipart('public/import-peserta-excel') ?>
+                                    <?= form_open_multipart('/import-peserta-excel') ?>
 
                                     <div>
                                         <label class="form-label">nama-file.xlsx\xls</label>
