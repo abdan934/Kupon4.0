@@ -42,8 +42,9 @@
                                     </div>
                                     <br>
                                     <button type="submit" class="btn btn-success mb-3">Import</button>
+                                    <br>
                                     <?= form_close() ?>
-
+                                    <br>
                                     <!-- </form> -->
 
                                     <?php
