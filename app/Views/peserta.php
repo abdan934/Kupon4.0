@@ -24,9 +24,9 @@
 
             <!-- <div class="container col-lg-6"> -->
             <div id="page-wrapper">
-                <div class=" container-fluid mt-5">
+                <div class=" container-fluid ">
                     <div class="row">
-                        <div class="col-lg-6 mt-2">
+                        <!-- <div class="col-lg-6"> -->
                             <div class="panel panel-default">
                                 <div class="panel-heading navbar-default">
                                     <!-- Hover Rows -->

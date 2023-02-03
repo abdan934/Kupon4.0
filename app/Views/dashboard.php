@@ -119,7 +119,7 @@
                 <!-- /.panel -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart Example
+                        <!-- <i class="fa fa-bar-chart-o fa-fw"></i>--> Table Data Peserta 
                         <div class="pull-right">
                             <!-- <div class="btn-group">
                                 <button type="button" class="btn btn-default btn-xs dropdown-toggle"
@@ -144,7 +144,7 @@
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-lg-4">
+                            <!-- <div class="col-lg-4"> -->
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover table-striped">
                                         <thead>

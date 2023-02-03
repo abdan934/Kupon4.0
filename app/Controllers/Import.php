@@ -61,89 +61,6 @@ class Import extends BaseController
                                     ]
                             ]
                             );
-
-                            // if (!$valid) {
-                            //     $this->session->setFlashdata('pesan', $validation->getError('file'));
-                            //     return redirect()->to('public/import-peserta-home');
-                            // } else {
-                            //     $file_excel = $this->request->getFile('file');
-                            //     $ext = $file_excel->getClientExtension();
-                            //     if($ext == 'xls'){
-                            //         $render = new Xls();
-                            //     }else{
-                            //         $render = new Xlsx();
-                            //     }
-                            //     $spreadsheet = $render->load($file_excel);
-                            //     $data = $spreadsheet->getActiveSheet()->toArray();
-                            //     foreach($data as $x => $row) {
-                            //         if($x == 0){
-                            //             continue;
-                            //         }
-                            //         $no_hp = $row[0];
-                            //         $nama = $row[1];
-                            //         $email = $row[2];
-                            //         $alamat = $row[3];
-                            //         $undian = generate_string($permitted_chars, 5);
-                            //         $db = \Config\Database::connect();
-                            //         $data_simpan = [
-                            //             'no_hp' => $no_hp,
-                            //             'nama_peserta' => $nama,
-                            //             'email' => $email,
-                            //             'alamat' => $alamat,
-                            //             'undian' => $undian
-                            //         ];
-                            //         $db->table('tb_peserta')->insert($data_simpan);
-                            //         $jumlah_baris_diimport = $db->affectedRows();
-                            //         if ($jumlah_baris_diimport > 0) {
-                            //             $this->session->setFlashdata('pesan', 'Import data berhasil');
-                            //             return redirect()->to('public/import-peserta-home');
-                            //         }
-                            //     }
-                            // }
-                            
-
-                    //     if (!$valid){
-
-                    //         $this->session->setFlashdata('pesan',$validation->getError('file'));
-                    //         return redirect()->to('public/import-peserta-home');
-                            
-                    //         }else{
-                    //         $file_excel = $this->request->getFile('file');
-                    //         $ext = $file_excel->getClientExtension();
-
-                    //         if($ext == 'xls'){
-                    //         $render = new Xls();
-                    //         }else{
-                    //         $render = new Xlsx();
-                    //             }
-
-                    //         $spreadsheet = $render->load($file_excel);
-                    //         $data =$spreadsheet->getActiveSheet()->toArray();
-
-                    //         foreach($data as $x => $row){
-                    //         if($x==0){
-                    //         continue;
-                    //             }
-                    //         $no_hp = $row[0];
-                    //         $nama = $row[1];
-                    //         $email = $row[2];
-                    //         $alamat = $row[3];
-                    //         $undian = generate_string($permitted_chars, 5);
-
-                    //         $db = \Config\Database::connect();
-
-                    //         $data_simpan= [
-                    //             'no_hp' => $no_hp,
-                    //             'nama_peserta'=>$nama,
-                    //             'email'=>$email,
-                    //             'alamat'=>$alamat,
-                    //             'undian'=>$undian
-                    //         ];
-                    //         $db->table('tb_peserta')->insert($data_simpan);
-                    //         $this->session->setFlashdata('pesan', 'Import data berhasil');
-                    //         return redirect()->to('public/import-peserta-home');
-                    //     }
-                    // }
                         
                     if (!$valid){
                         
@@ -175,24 +92,74 @@ class Import extends BaseController
                                 $undian = generate_string($permitted_chars, 5);
     
                                 $db = \Config\Database::connect();
-    
-                                $data_simpan= [
-                                    'no_hp' => $no_hp,
-                                    'nama_peserta'=>$nama,
-                                    'email'=>$email,
-                                    'alamat'=>$alamat,
-                                    'undian'=>$undian
-                                ];
-                                $db->table('tb_peserta')->insert($data_simpan);
-                                    // $query->execute();
-                                    $jumlah_baris_diimport = $db->affectedRows();;
-                                    if ($jumlah_baris_diimport > 0) {
+
+                                //cek isi table
+                                $cek = $db->table('tb_peserta')->where('no_hp', $no_hp)->get()->getRowArray();
+
+                                if($cek){
+                                    $this->session->setFlashdata('pesan', 'Data sudah ada');
+                                    // return redirect()->to('public/import-peserta-home',['judul' => $judul]);
+                                    return view('import_peserta',['judul' => $judul]);
+                                } else {
+                                     // jika data belum ada maka tambahkan
+                                     $data_simpan= [
+                                        'no_hp' => $no_hp,
+                                        'nama_peserta'=>$nama,
+                                        'email'=>$email,
+                                        'alamat'=>$alamat,
+                                        'undian'=>$undian
+                                     ];
+                                     $db->table('tb_peserta')->insert($data_simpan);
+                                     $jumlah_baris_diimport = $db->affectedRows();
+
+                                     if ($jumlah_baris_diimport > 0) {
                                        
                                         $this->session->setFlashdata('pesan', 'Import data berhasil');
                                         // return redirect()->to('public/import-peserta-home',['judul' => $judul]);
                                         return view('import_peserta',['judul' => $judul]);
                                     }
-                                 }
+                                  }
+
+                                }
+ 
+                                // jika belum ada maka insert
+
+                                // if (empty($cek)) {
+                                    // jika data belum ada maka tambahkan
+                                //     $data_simpan= [
+                                //        'no_hp' => $no_hp,
+                                //        'nama_peserta'=>$nama,
+                                //        'email'=>$email,
+                                //        'alamat'=>$alamat,
+                                //        'undian'=>$undian
+                                //     ];
+                                //     $db->table('tb_peserta')->insert($data_simpan);
+                                //     $jumlah_baris_diimport = $db->affectedRows();
+                                //  }
+                                
+                                // $data_simpan= [
+                                //     'no_hp' => $no_hp,
+                                //     'nama_peserta'=>$nama,
+                                //     'email'=>$email,
+                                //     'alamat'=>$alamat,
+                                //     'undian'=>$undian
+                                // ];
+                                // $db->table('tb_peserta')->insert($data_simpan);
+                                //     // $query->execute();
+                                //     $jumlah_baris_diimport = $db->affectedRows();;
+                                //     if ($jumlah_baris_diimport > 0) {
+                                       
+                                //         $this->session->setFlashdata('pesan', 'Import data berhasil');
+                                //         // return redirect()->to('public/import-peserta-home',['judul' => $judul]);
+                                //         return view('import_peserta',['judul' => $judul]);
+                                //     }
+                                //  }
+                                    //   if ($jumlah_baris_diimport > 0) {
+                                       
+                                    //     $this->session->setFlashdata('pesan', 'Import data berhasil');
+                                        // return redirect()->to('public/import-peserta-home',['judul' => $judul]);
+                                    //     return view('import_peserta',['judul' => $judul]);
+                                    // }
                             } catch (Exception $e) {
                                 // kode untuk menangani kesalahan
                                 $this->session->setFlashdata('pesan', 'Error: ' . $e->getMessage());
@@ -203,4 +170,3 @@ class Import extends BaseController
                         // return redirect()->to('public/import-peserta-home');
                     }
     }
-// }

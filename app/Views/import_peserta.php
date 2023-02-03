@@ -18,7 +18,6 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">Import Peserta</h1>
-
                             <div class="main-panel">
                                 <div class="content-wrapper">
                                     <!-- <form method="" action="" enctype="multipart/form-data"> -->
@@ -63,8 +62,8 @@ if(!empty($session->getFlashdata('pesan'))){
         echo "<div class='alert alert-danger mt-3' role='alert'>";
         echo $session->getFlashdata('pesan');
         echo "</div>";
-    }elseif(substr($session->getFlashdata('pesan'), 0, 7) == "Error: "){
-        echo "<div class='alert alert-danger mt-3' role='alert'>";
+    }elseif(substr($session->getFlashdata('pesan'), 0, 7) == "Data sudah ada"){
+        echo "<div class='alert alert-warning mt-3' role='alert'>";
         echo $session->getFlashdata('pesan');
         echo "</div>";
     }else{
