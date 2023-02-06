@@ -96,11 +96,7 @@ class Import extends BaseController
                                 //cek isi table
                                 $cek = $db->table('tb_peserta')->where('no_hp', $no_hp)->get()->getRowArray();
 
-                                if($cek){
-                                    $this->session->setFlashdata('pesan', 'Data sudah ada');
-                                    // return redirect()->to('public/import-peserta-home',['judul' => $judul]);
-                                    return view('import_peserta',['judul' => $judul]);
-                                } else {
+                                if(!$cek){
                                      // jika data belum ada maka tambahkan
                                      $data_simpan= [
                                         'no_hp' => $no_hp,
@@ -112,16 +108,21 @@ class Import extends BaseController
                                      $db->table('tb_peserta')->insert($data_simpan);
                                      $jumlah_baris_diimport = $db->affectedRows();
 
-                                     if ($jumlah_baris_diimport > 0) {
-                                       
-                                        $this->session->setFlashdata('pesan', 'Import data berhasil');
-                                        // return redirect()->to('public/import-peserta-home',['judul' => $judul]);
-                                        return view('import_peserta',['judul' => $judul]);
-                                    }
+                                    
+                                   
+                                } else {
+                                    $this->session->setFlashdata('pesan', 'Data sudah ada');
+                                    // return redirect()->to('public/import-peserta-home',['judul' => $judul]);
+                                    return view('import_peserta',['judul' => $judul]);
                                   }
-
                                 }
  
+                                if ($jumlah_baris_diimport > 0) {
+                                       
+                                    $this->session->setFlashdata('pesan', 'Import data berhasil');
+                                    // return redirect()->to('public/import-peserta-home',['judul' => $judul]);
+                                    return view('import_peserta',['judul' => $judul]);
+                                }
                                 // jika belum ada maka insert
 
                                 // if (empty($cek)) {
