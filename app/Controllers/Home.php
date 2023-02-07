@@ -3,23 +3,29 @@
 namespace App\Controllers;
 
 use App\Models\Model_peserta;
+// use CodeIgniter\Database\ConnectionInterface;
+
+
+// require dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 class Home extends BaseController
 {
+  // protected $db;
+  // public function __construct(ConnectionInterface $db)
+  // {
+  //     $this->db = $db;
+  // }
+
     public function index()
     {
-        //   $data_judul ['judul'] = 'Data Peserta';
+       // title head
         $judul = 'Dashboard';
-        //   $judul_semua = $data_judul->findAll();
           $peserta_model = new Model_peserta();
           $all_data_peserta = $peserta_model->findAll();
-        //   return view ('dashboard',$data_judul);
-        //   return view('dashboard',['all_data_peserta'=> $all_data_peserta]);
-          return view('dashboard', ['judul' => $judul, 'all_data_peserta'=> $all_data_peserta]);
-        // $this->db->get('tb_peserta');
-        // echo $this->db->last_query();
-        // $this->load->database();
-        // var_dump($this->db->conn_id);
+
+          $total_data_peserta = $peserta_model->countAllResults();
+
+          return view('dashboard', ['judul' => $judul, 'all_data_peserta'=> $all_data_peserta,'total_data_peserta'=>$total_data_peserta]);
 
 
     }

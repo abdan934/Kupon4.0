@@ -33,6 +33,8 @@ $routes->get('/', 'Home::index');
 $routes->get('/data-peserta', 'Peserta::index');
 $routes->get('/import-peserta-home', 'Import::index');
 $routes->post('/import-peserta-excel', 'Import::import');
+$routes->get('/home-page', 'Landing_Page::index');
+$routes->post('/home-page-check', 'Landing_Page::check');
 
 /*
  * --------------------------------------------------------------------

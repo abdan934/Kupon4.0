@@ -13,7 +13,6 @@ class Peserta extends BaseController
         $peserta_model = new Model_peserta();
         $all_data_peserta = $peserta_model->findAll();
         return view('peserta',['all_data_peserta'=> $all_data_peserta,'judul' => $judul]);
-        // return view('peserta');
     }
 
 }

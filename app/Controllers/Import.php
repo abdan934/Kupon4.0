@@ -22,7 +22,7 @@ class Import extends BaseController
     
     public function index()
     {
-        $judul = 'Import Peserta';
+        $judul = 'Import Data';
         // $judul = ['judul' => $judul];
         // $data ['judul'] = 'Import Peserta';
          return view('import_peserta',['judul' => $judul]);
@@ -65,7 +65,6 @@ class Import extends BaseController
                     if (!$valid){
                         
                         $this->session->setFlashdata('pesan',$validation->getError('file'));
-                        // return redirect()->to('public/import-peserta-home',['judul' => $judul]);
                         return view('import_peserta',['judul' => $judul]);
                     }else{
                                     try {
@@ -95,7 +94,7 @@ class Import extends BaseController
 
                                 //cek isi table
                                 $cek = $db->table('tb_peserta')->where('no_hp', $no_hp)->get()->getRowArray();
-
+                                
                                 if(!$cek){
                                      // jika data belum ada maka tambahkan
                                      $data_simpan= [
@@ -107,9 +106,6 @@ class Import extends BaseController
                                      ];
                                      $db->table('tb_peserta')->insert($data_simpan);
                                      $jumlah_baris_diimport = $db->affectedRows();
-
-                                    
-                                   
                                 } else {
                                     $this->session->setFlashdata('pesan', 'Data sudah ada');
                                     // return redirect()->to('public/import-peserta-home',['judul' => $judul]);
@@ -123,44 +119,6 @@ class Import extends BaseController
                                     // return redirect()->to('public/import-peserta-home',['judul' => $judul]);
                                     return view('import_peserta',['judul' => $judul]);
                                 }
-                                // jika belum ada maka insert
-
-                                // if (empty($cek)) {
-                                    // jika data belum ada maka tambahkan
-                                //     $data_simpan= [
-                                //        'no_hp' => $no_hp,
-                                //        'nama_peserta'=>$nama,
-                                //        'email'=>$email,
-                                //        'alamat'=>$alamat,
-                                //        'undian'=>$undian
-                                //     ];
-                                //     $db->table('tb_peserta')->insert($data_simpan);
-                                //     $jumlah_baris_diimport = $db->affectedRows();
-                                //  }
-                                
-                                // $data_simpan= [
-                                //     'no_hp' => $no_hp,
-                                //     'nama_peserta'=>$nama,
-                                //     'email'=>$email,
-                                //     'alamat'=>$alamat,
-                                //     'undian'=>$undian
-                                // ];
-                                // $db->table('tb_peserta')->insert($data_simpan);
-                                //     // $query->execute();
-                                //     $jumlah_baris_diimport = $db->affectedRows();;
-                                //     if ($jumlah_baris_diimport > 0) {
-                                       
-                                //         $this->session->setFlashdata('pesan', 'Import data berhasil');
-                                //         // return redirect()->to('public/import-peserta-home',['judul' => $judul]);
-                                //         return view('import_peserta',['judul' => $judul]);
-                                //     }
-                                //  }
-                                    //   if ($jumlah_baris_diimport > 0) {
-                                       
-                                    //     $this->session->setFlashdata('pesan', 'Import data berhasil');
-                                        // return redirect()->to('public/import-peserta-home',['judul' => $judul]);
-                                    //     return view('import_peserta',['judul' => $judul]);
-                                    // }
                             } catch (Exception $e) {
                                 // kode untuk menangani kesalahan
                                 $this->session->setFlashdata('pesan', 'Error: ' . $e->getMessage());

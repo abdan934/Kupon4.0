@@ -9,4 +9,8 @@ class Model_peserta extends Model
     protected $returnType = 'object';
     protected $allowedFields = ['nama_peserta','email','alamat','undian'];
 
+//     public function countByNoHP($no_hp)
+//     {
+//         return $this->where(['no_hp' => $no_hp])->countAllResults();
+//     }
 }

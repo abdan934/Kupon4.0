@@ -8,31 +8,31 @@
 <title><?= $judul ?></title>
 
 <!-- Bootstrap Core CSS -->
-<link href="<?php echo base_url('assets/css/bootstrap.min.css')?>" rel="stylesheet">
+<link href="./assets/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- MetisMenu CSS -->
-<link href="<?php echo base_url('assets/css/metisMenu.min.css')?>" rel=" stylesheet">
+<link href="./assets/css/metisMenu.min.css" rel=" stylesheet">
 
 <!-- Timeline CSS -->
-<link href="<?=base_url('assets/css/timeline.css')?>" rel=" stylesheet">
+<link href="./assets/css/timeline.css" rel=" stylesheet">
 
 <!-- Custom CSS -->
-<link href="<?=base_url('assets/css/startmin.css')?>" rel=" stylesheet">
+<link href="./assets/css/startmin.css" rel=" stylesheet">
 
 <!-- Morris Charts CSS -->
-<link href="<?=base_url('assets/css/morris.css')?>" rel=" stylesheet">
+<link href="./assets/css/morris.css" rel=" stylesheet">
 
 <!-- Custom Fonts -->
-<link href="<?=base_url('assets/css/font-awesome.min.css')?>" rel=" stylesheet" type="text/css">
+<link href="./assets/css/font-awesome.min.css" rel=" stylesheet" type="text/css">
 
 <!-- DataTables CSS -->
-<link href="<?=base_url('assets/css/dataTables/dataTables.bootstrap.css')?>" rel="stylesheet">
+<link href="./assets/css/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 
 <!-- DataTables Responsive CSS -->
-<link href="<?=base_url('assets/css/dataTables/dataTables.responsive.css')?>" rel="stylesheet">
+<link href="./assets/css/dataTables/dataTables.responsive.css" rel="stylesheet">
 
 <!-- favicon -->
-<link rel="shortcut icon" href="<?php echo base_url('assets/stampel-protic.png')?>">
+<link rel="shortcut icon" href="./assets/stampel-protic.png">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
