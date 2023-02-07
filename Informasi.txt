@@ -2,7 +2,17 @@ FreamWork CodeIgniter 4
 
 Libraries PhpSpreadsheet
 
-kekurangan = Masih error jika ho_hp(primary key) sudah ada tetap dipaksa tambah
-
 
 http://localhost/Kupon4.0/
+
+
+fitur :
+web admin =
+- export excel
+- import pdf dan excel
+- search data
+
+web landing =
+- cek kupon
+  - bilang dicek maka muncul gambar beserta nomor undian
+- form daftar
